@@ -1,0 +1,48 @@
+
+
+import { TabWidget, StandardTableView, VerticalBox } from "std-widgets.slint";
+import { ProcessAdapter } from "../../models.slint";
+export component DataFrame inherits StandardTableView {
+
+    columns: [
+		// 产品名称 单价 数量 订阅代码
+		{ title: "产品名称"},         
+        { title: "单价"},     
+        { title: "数量"},     
+        { title: "订阅代码"},         
+    ];
+    rows <=> ProcessAdapter.table_data;
+}
+
+export component InfoFrame inherits Rectangle {
+
+    border-color: gray;
+    border-radius: 5px;
+    border-width: 3px;
+
+    VerticalLayout {
+        spacing: 1px;
+        Text {
+            text: "统计信息";
+            font-size: 16px;
+
+            horizontal-alignment: center;
+            vertical-alignment: center;
+        }
+
+        Rectangle {
+            border-color: gray;
+            border-radius: 5px;
+            border-width: 3px;
+            VerticalBox {
+                Text {
+                    text: "学校名称：\{ProcessAdapter.school_name}";
+                }
+
+                Text {
+                    text: "结果数量：\{ProcessAdapter.table_data.length}";
+                }
+            }
+        }
+    }
+}

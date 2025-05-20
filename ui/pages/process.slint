@@ -1,0 +1,37 @@
+
+import { VerticalBox, HorizontalBox } from "std-widgets.slint";
+import { IgnoreFileFrame, SubCodeFrame } from "frames/config-frame.slint";
+import { DataFrame, InfoFrame } from "frames/data-frame.slint";
+import { CommandFrame } from "frames/command-frame.slint";
+
+
+export component ProcessPage inherits Rectangle {
+    VerticalBox {
+        Rectangle {
+            height: 25%;
+            // Command Frame
+            VerticalBox {
+
+                IgnoreFileFrame { }
+
+                SubCodeFrame { }
+            }
+        }
+
+        Rectangle {
+            HorizontalBox {
+                // Table
+                DataFrame { }
+
+                Rectangle {
+                    // 统计信息和命令按钮
+                    VerticalBox {
+                        InfoFrame { }
+
+                        CommandFrame { }
+                    }
+                }
+            }
+        }
+    }
+}

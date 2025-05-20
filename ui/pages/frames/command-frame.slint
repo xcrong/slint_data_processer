@@ -1,0 +1,47 @@
+
+
+import { Button, VerticalBox } from "std-widgets.slint";
+import { ProcessAdapter } from "../../models.slint";
+
+export component CommandFrame inherits VerticalBox { 
+
+	// 处理数据 复制结果 删除小学 删除中学
+	Button {
+        text: "处理数据";
+        clicked => {
+            ProcessAdapter.table_data = ProcessAdapter.process_data();
+        }
+    }
+
+    Button {
+        text: "复制结果";
+
+        clicked => {
+            ProcessAdapter.copy_result(
+                ProcessAdapter.table_data,
+                ProcessAdapter.is_primary ? ProcessAdapter.primary_start_row : ProcessAdapter.middle_start_row)
+        }
+    }
+
+    Button {
+        text: "删除小学";
+
+        clicked => {
+            ProcessAdapter.table_data = ProcessAdapter.del_by_starts_with(
+                ProcessAdapter.table_data,
+                ProcessAdapter.primary_subcode,
+            )
+        }
+    }
+
+    Button {
+        text: "删除中学";
+
+        clicked => {
+            ProcessAdapter.table_data = ProcessAdapter.del_by_starts_with(
+                ProcessAdapter.table_data,
+                ProcessAdapter.middle_subcode,
+            )
+        }
+    }
+}

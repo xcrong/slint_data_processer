@@ -1,0 +1,25 @@
+import {Button, TabWidget} from "std-widgets.slint";
+import { ProcessPage } from "pages/process.slint";
+import { ConfigPage } from "pages/config.slint";
+import { ProcessAdapter } from "models.slint";
+
+export { ProcessAdapter }
+
+export component AppWindow inherits Window {
+    title: "Data Processer";
+    preferred-width: 800px;
+    preferred-height: 600px;
+    icon: @image-url("./res/logo.png");
+
+    TabWidget {
+        Tab {
+            title: "处理";
+            ProcessPage {}
+        }
+
+        Tab {
+            title: "关于";
+            ConfigPage {}
+        }
+    }
+}

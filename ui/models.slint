@@ -1,0 +1,20 @@
+export global ProcessAdapter {
+    in-out property <string> ignore_file_path;
+    in-out property <string> primary_subcode:"8";
+    in-out property <string> middle_subcode: "5";
+    in-out property <string> primary_start_row: 56;
+    in-out property <string> middle_start_row: 32;
+    in-out property <bool> is_primary: true;
+    in-out property <bool> is_middle:false;
+    in-out property <[[StandardListViewItem]]> table_data;
+    in-out property <string> school_name;
+	// 学校结果的数量，取 table_data.length()
+	
+	
+
+	// Callback
+	callback choose_file() -> string;
+    callback process_data() -> [[StandardListViewItem]];
+    callback copy_result(table_data: [[StandardListViewItem]], start_row: string);
+    callback del_by_starts_with(table_data: [[StandardListViewItem]], starts_with: string) -> [[StandardListViewItem]];
+}

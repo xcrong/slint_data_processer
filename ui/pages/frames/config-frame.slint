@@ -1,0 +1,94 @@
+
+import { VerticalBox, LineEdit, Button, HorizontalBox, ComboBox, CheckBox } from "std-widgets.slint";
+import {ProcessAdapter} from "../../models.slint";
+export component IgnoreFileFrame inherits HorizontalBox {
+
+    Text {
+        text: "忽略代码\n文件：";
+        horizontal-alignment: center;
+        vertical-alignment: center;
+    }
+
+    LineEdit {
+        placeholder-text: "请输入忽略代码文件";
+        text <=> ProcessAdapter.ignore_file_path;
+    }
+
+    Button {
+        text: "选择文件";
+        clicked => {
+            ProcessAdapter.ignore_file_path = ProcessAdapter.choose_file()
+        }
+    }
+}
+
+export component SubCodeFrame inherits HorizontalBox {
+
+    Text {
+        text: "小学订阅\n代码首位：";
+        horizontal-alignment: center;
+        vertical-alignment: center;
+    }
+
+    ComboBox {
+        width: parent.width * 8%;
+        model: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+        current-value <=> ProcessAdapter.primary_subcode;
+    }
+
+    Text {
+        text: "初中订阅\n代码首位：";
+        horizontal-alignment: center;
+        vertical-alignment: center;
+    }
+
+    ComboBox {
+        width: parent.width * 8%;
+        model: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+        current-value <=> ProcessAdapter.middle_subcode;
+    }
+
+    Text {
+        text: "小学\n起始行：";
+        horizontal-alignment: center;
+        vertical-alignment: center;
+    }
+
+    LineEdit {
+        width: parent.width * 8%;
+        text <=> ProcessAdapter.primary_start_row;
+    }
+
+    Text {
+        text: "初中\n起始行：";
+        horizontal-alignment: center;
+        vertical-alignment: center;
+    }
+
+    LineEdit {
+        width: parent.width * 8%;
+        text <=> ProcessAdapter.middle_start_row;
+    }
+    
+    // 留白
+    Rectangle { }
+
+    CheckBox {
+        width: parent.width * 8%;
+        text: "小学";
+
+        checked <=> ProcessAdapter.is_primary;
+        changed checked => {
+            ProcessAdapter.is_middle = !self.checked;
+        }
+    }
+
+    CheckBox {
+        width: parent.width * 8%;
+        text: "初中";
+        checked <=> ProcessAdapter.is_middle;
+        changed checked => {
+            ProcessAdapter.is_primary = !self.checked;
+        }
+    }
+}
