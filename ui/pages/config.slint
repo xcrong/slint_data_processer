@@ -1,4 +1,27 @@
 
+import { VerticalBox } from "std-widgets.slint";
+import { ConfigAdapter } from "../models.slint";
+
 export component ConfigPage inherits Rectangle {
     background: blue;
+
+    VerticalBox {
+        alignment: center;
+        Rectangle {}
+        Text {
+            text: ConfigAdapter.author_name;
+            horizontal-alignment: center;
+        }
+
+        Text {
+            text: ConfigAdapter.author_email;
+            horizontal-alignment: center;
+        }
+
+        Text {
+            text: ConfigAdapter.product_desc;
+            horizontal-alignment: center;
+        }
+        Rectangle {}
+    }
 }

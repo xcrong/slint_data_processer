@@ -10,7 +10,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     {
         // 为数据模型 Backend 添加回调
-        data_processer::logic::impl_logic_for_backend(ui_weak.clone());
+        data_processer::logic::impl_logic_for_process_asdapter(ui_weak.clone());
     }
 
     {

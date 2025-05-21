@@ -18,3 +18,9 @@ export global ProcessAdapter {
     callback copy_result(table_data: [[StandardListViewItem]], start_row: string);
     callback del_by_starts_with(table_data: [[StandardListViewItem]], starts_with: string) -> [[StandardListViewItem]];
 }
+
+export global ConfigAdapter {
+    out property <string> author_name: "xcrong";
+    out property <string> author_email: "hi@xcrong.com";
+    out property <string> product_desc: "A simple tool to help you manage your data.";
+}

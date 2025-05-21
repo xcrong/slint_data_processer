@@ -2,7 +2,7 @@ use crate::{AppWindow, ProcessAdapter};
 use slint::{ComponentHandle, ModelRc, StandardListViewItem, VecModel, Weak};
 use std::rc::Rc;
 
-pub fn impl_logic_for_backend(ui_weak: Weak<AppWindow>) {
+pub fn impl_logic_for_process_asdapter(ui_weak: Weak<AppWindow>) {
     if let Some(ui_strong) = ui_weak.clone().upgrade() {
         let process_adapter = ui_strong.global::<ProcessAdapter>();
 
